@@ -39,11 +39,12 @@ expenses = [
     {"item": "book", "price": 125, "quantity": 7},
     {"item": "oil", "price": 90, "quantity": 5}
 ]
-highest_cost = 0
+highest_cost = float("-inf")
 expensive_item = ""
 grand_total = 0
-chepest_cost = 3000
+chepest_cost = float("inf")
 chepest_item = ""
+total_item = len(expenses)
 
 def get_total(price,quantity):
     return price*quantity
@@ -52,6 +53,8 @@ for expense in expenses:
     total_exp = get_total(expense["price"], expense["quantity"])
     print(expense["item"], expense ["price"], "*" ,expense ["quantity"], "=", total_exp)
     grand_total+= total_exp
+    
+    
     if total_exp > highest_cost:
         highest_cost = total_exp
         expensive_item = expense["item"]
@@ -60,7 +63,18 @@ for expense in expenses:
         chepest_cost = total_exp
         chepest_item = expense["item"]
 
+    if total_exp > 400:
+        print(expense["item"],"*", expense["price"], "=", total_exp)
+    
+    if total_exp<300:
+        print(expense["item"])
 
+    average_item = grand_total/total_item
+    
+    
+   
+
+print("average expenses",average_item)
 print("Grand_Total:", grand_total)   
 print("Highest_Cost:", highest_cost)
 print("Expensive_Item:",expensive_item )
